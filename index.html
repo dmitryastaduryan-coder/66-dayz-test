@@ -39,7 +39,8 @@
             width: 100%;
             padding: 15px;
             margin-top: 25px;
-            background-color: #58a6ff;
+            /* Изменение: Главный CTA становится зеленым */
+            background-color: #28a745; 
             color: #0d1117;
             border: none;
             border-radius: 8px;
@@ -50,7 +51,7 @@
         }
 
         .btn:hover:not(:disabled) {
-            background-color: #3081e7;
+            background-color: #218838; /* Более темный зеленый */
         }
 
         .btn:disabled {
@@ -83,9 +84,10 @@
             background-color: #30363d;
         }
 
-        .option.selected {
+        .option.selected, .checkbox-option.selected {
             background-color: #0c1a2e;
-            border-color: #58a6ff;
+            /* Изменение: Подсветка выбора становится зеленой */
+            border-color: #28a745; 
             font-weight: 600;
         }
 
@@ -98,8 +100,11 @@
             font-size: 0.9em;
             line-height: 1.4;
             display: none;
+            /* Улучшение: Добавим тень */
+            box-shadow: 0 4px 10px rgba(35, 134, 54, 0.4); 
         }
 
+        /* ... Стили checkbox-option остаются ... */
         .checkbox-option {
             background-color: #21262d;
             border: 2px solid #30363d;
@@ -109,11 +114,7 @@
             cursor: pointer;
             transition: background-color 0.2s, border-color 0.2s;
         }
-        .checkbox-option.selected {
-            background-color: #0c1a2e;
-            border-color: #58a6ff;
-        }
-
+        
         .static-screen {
             text-align: center;
             display: none;
@@ -123,28 +124,18 @@
         }
         .static-screen p { margin-bottom: 15px; line-height: 1.5; }
         
-        #loader-progress {
-            background-color: #30363d;
-            border-radius: 4px;
-            margin-top: 20px;
-            height: 10px;
-            overflow: hidden;
+        /* Изменение: Стили метрик */
+        .metric-item { 
+            margin-bottom: 20px; 
+            background-color: #21262d; /* Карточка для метрики */
+            padding: 10px;
+            border-radius: 8px;
         }
-        #loader-bar {
-            width: 0%;
-            height: 100%;
-            background-color: #28a745; 
-            transition: none; /* Убираем стандартный CSS-transition для ручной анимации */
-        }
-        .loading-text { margin-top: 15px; font-style: italic; color: #8b949e; }
-        
-        .metric-item { margin-bottom: 20px; }
         .metric-item label { 
             display: block; 
             font-weight: bold; 
             margin-bottom: 5px; 
             text-align: left;
-            /* Эмодзи слева */
         }
         .progress-bar-container {
             background-color: #30363d;
@@ -155,8 +146,8 @@
         }
         .progress-bar {
             height: 100%;
-            background-color: #28a745; 
-            transition: none; /* Убираем стандартный CSS-transition для ручной анимации */
+            background-image: linear-gradient(90deg, #28a745, #38c172); /* Легкий градиент */
+            transition: none; 
             text-align: right;
             line-height: 16px;
             font-size: 0.8em;
@@ -166,50 +157,137 @@
             box-sizing: border-box;
         }
         
-        .citation-box {
-            background-color: #21262d;
+        /* Улучшение: Стили Intro Screen */
+        .intro-title-highlight {
+            color: #28a745; /* Зеленый акцент */
+        }
+        .intro-quote-box {
             border-left: 4px solid #58a6ff;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
+            padding-left: 15px;
+            margin: 20px 0;
             text-align: left;
         }
-        .citation-box p { margin: 0; }
-        .citation-text { font-style: italic; font-size: 0.95em; color: #ffffff; }
-        .citation-author { font-size: 0.8em; color: #8b949e; margin-top: 5px; }
-
-        .journey-step { text-align: left; margin-bottom: 20px; padding-left: 10px; border-left: 3px solid #58a6ff; }
-        .journey-step h3 { margin: 0; color: #ffffff; font-size: 1.1em; }
-        .journey-step p { margin: 5px 0 0 0; font-size: 0.9em; color: #8b949e; }
+        /* АНИМАЦИЯ ПУЛЬСАЦИИ */
+        @keyframes pulse-beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #ffeb3b; }
+            100% { transform: scale(1); }
+        }
+        .pulsating-text {
+            display: inline-block;
+            animation: pulse-beat 2s infinite ease-in-out;
+            color: #ffc107;
+            font-weight: bold;
+            margin-top: 10px;
+        }
         
-        .testimonial-box {
+        /* Стили для формы ввода данных */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
             background-color: #21262d;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            text-align: left;
-            font-style: italic;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
         }
-        .testimonial-box .author { font-weight: bold; display: block; margin-top: 10px; color: #58a6ff; }
-        
+        .input-group input:focus {
+            border-color: #58a6ff;
+            outline: none;
+        }
+
+        /* Улучшение: Payment Box */
         .payment-box {
             background-color: #28a745;
             color: #0d1117;
             padding: 25px;
             border-radius: 10px;
             margin-top: 20px;
+            /* Улучшение: Легкая внутренняя тень */
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2); 
+            background-image: linear-gradient(180deg, #28a745, #218838);
         }
         .payment-box h2, .payment-box p { color: #0d1117; }
-        .payment-box ul { list-style: none; padding: 0; text-align: left; }
-        .payment-box li { margin-bottom: 10px; display: flex; align-items: center; }
-        .payment-box li::before { content: '✅'; margin-right: 10px; }
+        .payment-box li { color: #0d1117; }
+
     </style>
 </head>
 <body>
 
 <div class="app-container">
     
-    <div id="quiz-screen" class="quiz-screen" style="display: block;">
+    <div id="intro-screen" class="static-screen" style="display: flex;">
+        <h1 style="color: #ffffff; font-size: 2.2em; margin-bottom: 10px;">
+            <span class="intro-title-highlight">66 ШАГОВ</span> К ДИСЦИПЛИНЕ
+        </h1>
+        <p style="font-size: 1.2em; color: #58a6ff; margin-bottom: 30px; font-weight: 500;">
+            Путь, который меняет тебя изнутри
+        </p>
+        
+        <div class="intro-quote-box">
+            <p style="font-style: italic; margin: 0; line-height: 1.6; font-size: 1.1em;">
+                Это тот момент, когда ты перестаёшь разбрасываться оправданиями и начинаешь собирать себя по одному шагу в день.
+            </p>
+        </div>
+
+        <p style="font-weight: bold; margin-top: 20px;">
+            66 дней.<br>
+            Ежедневная практика.<br>
+            Дисциплина через тело, дыхание, внимание и простые, но мощные привычки.
+        </p>
+
+        <p style="margin-top: 20px;">
+            **Без давления.**<br>
+            **Без наказаний.**<br>
+            Только рост — шаг за шагом.
+        </p>
+        
+        <div style="margin-top: 30px; padding: 15px; border: 1px dashed #30363d; border-radius: 8px; font-size: 0.95em;">
+            🔥 **Дополнительные элементы**<br>
+            Реальные изменения. Реальная дисциплина. Реальная жизнь без хаоса.
+        </div>
+
+        <button id="intro-next-btn" class="btn" onclick="goToNextScreen('Q_INTRO')">
+            Начать свой путь →
+        </button>
+        <p class="pulsating-text">
+            💛 Готов расти? Дисциплина — это навык. И ты его освоишь
+        </p>
+    </div>
+    <div id="user-data-screen" class="static-screen">
+        <h1>Ваш Персональный Путь</h1>
+        <p>Чтобы рассчитать вашу точку роста и прислать отчет, пожалуйста, представьтесь.</p>
+        
+        <div style="width: 100%; max-width: 350px; margin: 0 auto;">
+            <div class="input-group">
+                <label for="user-name">Ваше Имя</label>
+                <input type="text" id="user-name" placeholder="Иван" oninput="checkDataInput()">
+            </div>
+            <div class="input-group">
+                <label for="user-age">Ваш Возраст (необязательно)</label>
+                <input type="number" id="user-age" placeholder="30" oninput="checkDataInput()">
+            </div>
+            <div class="input-group">
+                <label for="user-telegram">Ваш Ник в Telegram (Ключевое поле)</label>
+                <input type="text" id="user-telegram" placeholder="@yournick" oninput="checkDataInput()">
+            </div>
+        </div>
+
+        <button id="user-data-next-btn" class="btn" disabled onclick="captureUserData()">
+            Перейти к анкете →
+        </button>
+    </div>
+    <div id="quiz-screen" class="quiz-screen">
         <h1 id="quiz-header">Трансформация за 66 Дней</h1>
         <div id="question-area">
             </div>
@@ -400,10 +478,11 @@
     // ====================================
 
     // ✅ ИНТЕГРИРОВАННЫЙ URL ДЛЯ ОТПРАВКИ РЕЗУЛЬТАТОВ В TELEGRAM
-   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMRXo2Rx_IhrdEb-HwFTwp-HihmzDPTCoXVm2s3tDxBf-eiLCu9HOThEaGR5MEjqEW/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxQ0BwnXc9H_HqHYa4XJE5FFRyu_1SqVo6J9-xlJ0208s9R1DqMb5HmemaSPWPRa4s1/exec'; 
 
     // 1. КОНФИГУРАЦИЯ ВОПРОСОВ (РУСИФИЦИРОВАНЫ)
     const questions = [
+        // ... (Вопросы остаются без изменений)
         { id: 1, text: "Будьте честны: как бы вы описали свою жизнь прямо сейчас?", options: [ 
             { text: "Я доволен, но знаю, что способен на большее", score: 3, category: 'Дисциплина', message: "Это беспокойство, которое вы чувствуете? Это зов вашего потенциала. Вы готовы ответить." }, 
             { text: "Все в порядке, но я хочу значительно повысить свой уровень", score: 2, category: 'МентальнаяСила', message: "Хорошо недостаточно хорошо, когда вас ждет величие. Давайте совершим этот прорыв." }, 
@@ -466,9 +545,13 @@
         'Фокус': 0,
         'Уверенность': 0
     };
+    // НОВАЯ ПЕРЕМЕННАЯ ДЛЯ ДАННЫХ ПОЛЬЗОВАТЕЛЯ
+    let userData = {}; 
     
     // Карта для экранов
     const screenMap = {
+        'Q_INTRO': document.getElementById('intro-screen'), 
+        'Q_USER_DATA': document.getElementById('user-data-screen'), // Добавлен новый экран
         'Q_TEST': document.getElementById('quiz-screen'),
         'Q_LOADER': document.getElementById('loader-screen'),
         'Q_SCIENCE_STATS': document.getElementById('science-stats-screen'),
@@ -483,13 +566,20 @@
         'Q_PAYMENT': document.getElementById('payment-screen')
     };
 
-    let currentScreen = 'Q_TEST';
+    let currentScreen = 'Q_INTRO'; 
 
     function goToNextScreen(currentId) {
         screenMap[currentId].style.display = 'none';
 
         let nextId;
         switch (currentId) {
+            case 'Q_INTRO': 
+                nextId = 'Q_USER_DATA'; // Переход на новый экран
+                break;
+            case 'Q_USER_DATA':
+                nextId = 'Q_TEST';
+                displayQuestion(); 
+                break;
             case 'Q_TEST': 
                 nextId = 'Q_LOADER';
                 simulateLoader();
@@ -531,9 +621,33 @@
         }
 
         currentScreen = nextId;
-        screenMap[currentScreen].style.display = 'flex';
+        screenMap[currentScreen].style.display = (currentScreen === 'Q_TEST') ? 'block' : 'flex';
         window.scrollTo(0, 0); 
     }
+    
+    // НОВАЯ ЛОГИКА: ПРОВЕРКА И СОХРАНЕНИЕ ДАННЫХ ПОЛЬЗОВАТЕЛЯ
+    function checkDataInput() {
+        const telegramInput = document.getElementById('user-telegram').value.trim();
+        const nameInput = document.getElementById('user-name').value.trim();
+        const nextButton = document.getElementById('user-data-next-btn');
+
+        // Кнопка активна, если заполнено хотя бы Имя ИЛИ Ник в Telegram
+        if (telegramInput.length > 1 || nameInput.length > 1) {
+            nextButton.disabled = false;
+        } else {
+            nextButton.disabled = true;
+        }
+    }
+
+    function captureUserData() {
+        userData = {
+            name: document.getElementById('user-name').value.trim() || 'Не указано',
+            age: document.getElementById('user-age').value.trim() || 'Не указан',
+            telegram: document.getElementById('user-telegram').value.trim() || 'Не указан'
+        };
+        goToNextScreen('Q_USER_DATA');
+    }
+
 
     // 4. ЛОГИКА ТЕСТА 
     const questionArea = document.getElementById('question-area');
@@ -661,14 +775,13 @@
         const aPointMetricsDiv = document.getElementById('a-point-metrics');
         aPointMetricsDiv.innerHTML = '';
 
-        const animationData = []; // Для хранения данных для анимации
+        const animationData = []; 
 
-        // 1. Определение максимально возможного балла
+        // 1. Определение максимально возможного балла (Оставляем как есть)
         const maxScores = { 'Дисциплина': 0, 'МентальнаяСила': 0, 'Фокус': 0, 'Уверенность': 0 };
 
         questions.forEach(q => {
             if (q.multiSelect) {
-                // Вопрос 4: Дисциплина, максимальный балл за "Ничего из вышеперечисленного"
                 maxScores['Дисциплина'] += 10; 
                 return;
             }
@@ -713,7 +826,7 @@
             finalMetrics[metric] = percentage; 
             
             const emoji = metricEmojis[metric] || '';
-            const barId = `bar-${metric.replace(/\s/g, '')}`; // Уникальный ID для бара
+            const barId = `bar-${metric.replace(/\s/g, '')}`; 
             
             htmlContent += `
                 <div class="metric-item">
@@ -733,7 +846,7 @@
             animateMetricBar(data.id, data.percentage);
         });
         
-        // 3. ОТПРАВКА РЕЗУЛЬТАТОВ В TELEGRAM
+        // 3. ОТПРАВКА ВСЕХ ДАННЫХ (МЕТРИК И ПОЛЬЗОВАТЕЛЯ) В TELEGRAM
         if (APPS_SCRIPT_URL.startsWith('http')) {
              try {
                 const response = await fetch(APPS_SCRIPT_URL, {
@@ -743,7 +856,8 @@
                         'Content-Type': 'text/plain;charset=utf-8' 
                     },
                     body: JSON.stringify({
-                        metrics: finalMetrics
+                        metrics: finalMetrics,
+                        user: userData // ВАЖНО: Отправляем данные пользователя
                     })
                 });
 
@@ -758,7 +872,7 @@
         }
     }
     
-    // 7. СИМУЛЯЦИЯ ПОЛОСЫ ЗАГРУЗКИ (Обновлена для зеленого цвета)
+    // 7. СИМУЛЯЦИЯ ПОЛОСЫ ЗАГРУЗКИ (Оставляем как есть)
     function simulateLoader() {
         const bar = document.getElementById('loader-bar');
         const texts = document.querySelectorAll('.loading-text');
@@ -782,7 +896,7 @@
             bar.style.width = width + '%';
 
             if (width >= 33 && textIndex === 0) {
-                texts[0].style.color = '#58a6ff'; // Подсвечиваем активный текст
+                texts[0].style.color = '#58a6ff'; 
                 textIndex = 1;
             } else if (width >= 66 && textIndex === 1) {
                 texts[1].style.color = '#58a6ff';
@@ -795,8 +909,7 @@
 
     // 8. ЗАПУСК ПРИЛОЖЕНИЯ
     Object.values(screenMap).forEach(screen => screen.style.display = 'none');
-    screenMap['Q_TEST'].style.display = 'block';
-    displayQuestion();
+    screenMap['Q_INTRO'].style.display = 'flex'; 
 
 </script>
 
